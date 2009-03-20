@@ -1,0 +1,16 @@
+Name:                hlean
+Version:             0.1.2
+Build-Depends:       base,readline,containers,bytestring,process,unix,filepath,directory
+Build-type:          Simple
+License:             BSD3
+License-file:        LICENSE
+Author:              Norbert Wojtowicz <wojtowicz.norbert@gmail.com>
+Maintainer:          Norbert Wojtowicz <wojtowicz.norbert@gmail.com>
+Category:            System
+Synopsis:            Find duplicate files
+Description:         Recursively finds duplicate files given a list 
+                     of directories as arguments. Interactively 
+                     prompts user to delete, skip, or move the file(s).
+Extra-Source-Files:  README.txt
+Executable:          hlean
+Main-is:             hlean.hs
