@@ -1,3 +1,6 @@
+This is an old script I once wrote when starting out with Haskell (hosted on hackage).
+Just pushing it to GitHub until I have a chance to look it over.
+
 
 =====  Installation  =====
 

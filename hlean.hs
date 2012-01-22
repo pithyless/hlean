@@ -42,19 +42,19 @@ data Action = Keep
 -- $ sha256 LICENSE                                                                                                                           [ 8:39AM]
 -- SHA256 (LICENSE) = 9abf1037bcba4400b53a40305cce721fe61d3de916b9a010693f752054fcaa1e
 --
-hashCommand :: FilePath -> String
-hashCommand f = "sha256 \"" ++ f ++ "\""
-hashCommandParse :: B.ByteString -> B.ByteString
-hashCommandParse h = last $ B.words h
+-- hashCommand :: FilePath -> String
+-- hashCommand f = "sha256 \"" ++ f ++ "\""
+-- hashCommandParse :: B.ByteString -> B.ByteString
+-- hashCommandParse h = last $ B.words h
 
 -- Alternative 2
 -- $ sha256sum LICENSE
 -- 9abf1037bcba4400b53a40305cce721fe61d3de916b9a010693f752054fcaa1e  LICENSE
 --
--- hashCommand :: FilePath -> String
--- hashCommand f = "sha256sum \"" ++ f ++ "\""
--- hashCommandParse :: B.ByteString -> B.ByteString
--- hashCommandParse h = first $ B.words h
+hashCommand :: FilePath -> String
+hashCommand f = "sha256sum \"" ++ f ++ "\""
+hashCommandParse :: B.ByteString -> B.ByteString
+hashCommandParse h = head $ B.words h
 
 -- Alternative 3
 -- $  md5sum LICENSE
@@ -188,7 +188,7 @@ findDuplicates :: DB -> DB
 findDuplicates = M.filter ((>1) . length)
 
 ignoreFilters :: B.ByteString -> Bool
-ignoreFilters f = not $ B.isSubstringOf (B.pack "_darcs/") f
+ignoreFilters f = not $ (B.isInfixOf (B.pack "/_darcs/") f) || (B.isInfixOf (B.pack "/.git/") f)
 
 showUsage :: String
 showUsage = unlines
